@@ -19,6 +19,8 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-cVE6McAaQovM1TZ6Mv2V8RXW2sUPtbYMd51ceUKuwHE=";
   };
 
+  patches = [ ./libxcrypt-fix_test_fallbacks_shims.diff ];
+
   # this could be accomplished by updateAutotoolsGnuConfigScriptsHook, but that causes infinite recursion
   # necessary for FreeBSD code path in configure
   postPatch = ''

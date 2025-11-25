@@ -1,0 +1,11 @@
+--- asterisk-22.6.0/configure.ac.orig	2025-11-25 17:07:33.200924045 -0500
++++ asterisk-22.6.0/configure.ac	2025-11-25 17:07:50.445606422 -0500
+@@ -303,7 +303,7 @@
+ AC_PATH_PROG([TAR], [tar], :)
+ AC_PATH_PROG([PATCH], [patch], :)
+ AC_PATH_PROG([SED], [sed], :)
+-AC_PATH_PROG([NM], [nm], :)
++AC_PATH_TOOL([NM], [nm], :)
+ AC_PATH_PROG([REALPATH], [realpath], :)
+ 
+ 

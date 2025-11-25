@@ -100,6 +100,7 @@ stdenv.mkDerivation {
       ${optionalString withTsm "--enable-tivoli-tsm"}
       ${optionalString (!withNcurses) "--disable-gtx"}
       "--disable-linux-d_splice-alias-extra-iput"
+      "--disable-strip-binaries"
     )
   ''
   + optionalString withTsm ''

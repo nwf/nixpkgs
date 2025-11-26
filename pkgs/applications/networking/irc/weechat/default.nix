@@ -138,6 +138,7 @@ stdenv.mkDerivation rec {
     cmake
     pkg-config
     asciidoctor
+    gettext
   ]
   ++ lib.optionals enableTests [ cpputest ];
 

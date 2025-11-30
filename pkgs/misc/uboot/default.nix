@@ -641,6 +641,13 @@ in
     ];
   };
 
+  ubootPogoplugv4 = buildUBoot {
+    defconfig = "pogo_v4_defconfig";
+    extraMeta.platforms = [ "armv5tel-linux" ];
+    filesToInstall = [ "u-boot.kwb" ];
+  };
+
+
   ubootQemuAarch64 = buildUBoot {
     defconfig = "qemu_arm64_defconfig";
     extraMeta.platforms = [ "aarch64-linux" ];

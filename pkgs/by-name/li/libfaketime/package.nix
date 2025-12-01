@@ -61,8 +61,11 @@ stdenv.mkDerivation (finalAttrs: {
       "-Wno-error=format-truncation"
     ]
     # https://github.com/wolfcw/libfaketime/blob/6714b98794a9e8a413bf90d2927abf5d888ada99/README#L101-L104
-    ++ lib.optionals (stdenv.hostPlatform.isLoongArch64 || stdenv.hostPlatform.isRiscV64) [
+    ++ lib.optionals (stdenv.hostPlatform.isLoongArch64 || stdenv.hostPlatform.isRiscV64 || stdenv.hostPlatform.isPower64) [
       "-DFORCE_PTHREAD_NONVER"
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isPower64) [
+      "-DFORCE_MONOTONIC_FIX"
     ]
   );
 

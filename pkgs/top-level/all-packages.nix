@@ -6903,7 +6903,8 @@ with pkgs;
     boost189
     ;
 
-  boost = boost187;
+  # https://github.com/NixOS/nixpkgs/issues/382179
+  boost = boost189;
 
   botanEsdm = botan3.override { withEsdm = true; };
 

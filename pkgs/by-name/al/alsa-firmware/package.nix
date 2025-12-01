@@ -34,6 +34,7 @@ stdenv.mkDerivation (finalAttrs: {
     || stdenv.hostPlatform.isAarch64
     || stdenv.hostPlatform.isLoongArch64
     || stdenv.hostPlatform.isRiscV64
+    || stdenv.hostPlatform.isPower64
   ) buildPackages.stdenv.cc;
 
   dontStrip = true;

@@ -26,6 +26,15 @@ stdenv.mkDerivation rec {
     hash = "sha256-s/1k5a3n33iLmSpKQT5u08xoj8ypjf2Vzln88OBrqf0=";
   };
 
+  postPatch = lib.strings.concatLines
+    ( []
+    ++ lib.optional (stdenv.hostPlatform.isAarch64)
+       ''
+         substituteInPlace ./src/include/defaults.mk \
+           --replace-fail "-march=native" ""
+       ''
+    );
+
   nativeBuildInputs = [
     pkg-config
     mandoc

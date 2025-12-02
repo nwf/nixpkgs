@@ -27,6 +27,7 @@ in
       # as SUID-root program. OpenSSH defaults to referencing it from libexec, which
       # cannot be made SUID in Nix.
       ./ssh-keysign-8.5.patch
+      ./disable-fzero-call-used-regs-used-on-ppc64le.patch
     ];
     extraMeta = {
       maintainers = with lib.maintainers; [

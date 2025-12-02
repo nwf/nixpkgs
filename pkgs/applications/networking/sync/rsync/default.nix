@@ -41,6 +41,14 @@ stdenv.mkDerivation rec {
     })
   ];
 
+  postPatch = lib.strings.concatLines
+    [ # https://github.com/RsyncProject/rsync/issues/746 workaround
+      ''
+        substituteInPlace ./testsuite/chgrp.test \
+          --replace-fail "test_fail" "test_skipped"
+      ''
+    ];
+
   nativeBuildInputs = [
     updateAutotoolsGnuConfigScriptsHook
     perl

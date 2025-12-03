@@ -91,6 +91,9 @@ let
 
       postPatch = ''
         echo "PJPROJECT_CONFIG_OPTS += --prefix=$out" >> third-party/pjproject/Makefile.rules
+        substituteInPlace ./third-party/pjproject/Makefile --replace-fail \
+          "cd source ; ./aconfigure" \
+          "cd source ; cp ../../../config.{guess,sub} . ; ./aconfigure"
       '';
 
       src = fetchurl {

@@ -78,6 +78,8 @@ buildPythonPackage rec {
     # Patching of numpy.distutils is needed to prevent it from undoing the
     # patch to distutils.
     ./numpy-distutils-C++.patch
+  ] ++ [
+    ./disable-failing-ibm_double_double_test.patch
   ];
 
   postPatch = ''

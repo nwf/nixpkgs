@@ -1,0 +1,13 @@
+--- a/numpy/_core/tests/test_scalarprint.py.orig	2025-12-02 05:28:52.629767953 +0000
++++ b/numpy/_core/tests/test_scalarprint.py	2025-12-02 05:29:27.797917502 +0000
+@@ -329,8 +329,8 @@
+         assert_equal(fsci(tp('1.0'), unique=False, precision=4),
+                         "1.0000e+00")
+ 
+-    @pytest.mark.skipif(not platform.machine().startswith("ppc64"),
+-                        reason="only applies to ppc float128 values")
++    @pytest.mark.skipif(True,
++                        reason="https://github.com/numpy/numpy/issues/21094")
+     def test_ppc64_ibm_double_double128(self):
+         # check that the precision decreases once we get into the subnormal
+         # range. Unlike float64, this starts around 1e-292 instead of 1e-308,

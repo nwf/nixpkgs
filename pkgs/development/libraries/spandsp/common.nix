@@ -51,6 +51,9 @@ stdenv.mkDerivation (finalAttrs: {
     substituteInPlace configure.ac \
       --replace-fail '$xml2_include_dir /usr/include /usr/local/include /usr/include/libxml2 /usr/local/include/libxml2' '$xml2_include_dir ${lib.getDev libxml2}/include ${lib.getDev libxml2}/include/libxml2 /usr/local/include/libxml2' \
       --replace-fail 'if test -n "$enable_tests" ; then' 'if test "$enable_tests" = "yes" ; then'
+
+    substituteInPlace ./tests/bit_operations_tests.c \
+      --replace-fail "i = -1" "i = 0"
   '';
 
   outputs = [

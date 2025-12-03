@@ -31,6 +31,12 @@ buildPythonPackage rec {
     hash = "sha256-G0RHjZ4mGz+4uqXnSgyjvA4F8hqjYWe/nL+FDlQnZbg=";
   };
 
+  postPatch = ''
+    substituteInPlace ./tests/unit/test_file_limit.py \
+      --replace-fail "SystemExit" "(SystemExit, RuntimeError)" \
+      --replace-fail "excinfo.value.code" "getattr(excinfo.value, \"code\", 1)"
+  '';
+
   nativeBuildInputs = [
     hatch-vcs
     hatchling

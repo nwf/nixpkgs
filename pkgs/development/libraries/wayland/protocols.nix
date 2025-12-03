@@ -28,6 +28,11 @@ stdenv.mkDerivation (finalAttrs: {
     hash = "sha256-TSsqnj4JnQF9yBB78cM00nu4fZ5K/xmgyNhW0XzUHvA=";
   };
 
+  patches = [
+    # https://gitlab.freedesktop.org/wayland/wayland-protocols/-/merge_requests/363
+    ./protocols-363.patch
+  ];
+
   postPatch = lib.optionalString finalAttrs.finalPackage.doCheck ''
     patchShebangs tests/
   '';

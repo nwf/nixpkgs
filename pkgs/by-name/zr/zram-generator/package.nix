@@ -35,6 +35,8 @@ rustPlatform.buildRustPackage rec {
       --replace-fail 'Command::new("modprobe")' 'Command::new("${kmod}/bin/modprobe")'
     substituteInPlace src/config.rs \
       --replace-fail 'Command::new("/bin/sh")' 'Command::new("${bash}/bin/sh")'
+    substituteInPlace tests/10-example/bin/xenstore-read \
+      --replace-fail '#!/bin/sh' '#!${bash}/bin/sh'
   '';
 
   nativeBuildInputs = [
